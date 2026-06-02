@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -34,6 +34,22 @@ export const metadata: Metadata = {
     url: "https://quietworld.com",
     siteName: "QuietWorld",
   },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: "QuietWorld",
+    statusBarStyle: "black-translucent",
+  },
+  icons: {
+    icon: "/icon-192.png",
+    apple: "/apple-touch-icon.png",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0A1837",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

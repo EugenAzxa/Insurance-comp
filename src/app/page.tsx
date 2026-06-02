@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import InstallApp from "./InstallApp";
 
 // The dotLottie player is a custom element registered by the script loaded in
 // layout.tsx. Declare it so TSX/JSX accepts <dotlottie-wc>.
@@ -131,6 +132,7 @@ export default function Home() {
             <a href="#easy">What you get</a>
             <a href="#plans">The plan</a>
             <a href="#how">How it works</a>
+            <a href="#getapp">Get the app</a>
             <a href="#faq">FAQ</a>
             <a href="#join" className="btn btn-nav">
               Get started
@@ -974,6 +976,42 @@ export default function Home() {
                 mortality risk at today&apos;s number.
               </div>
             </details>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ GET THE APP (PWA) ============ */}
+      <section id="getapp">
+        <div className="container">
+          <div className="getapp-grid">
+            <div>
+              <div className="section-eyebrow">The app</div>
+              <h2>
+                Carry QuietWorld <span className="serif">in your pocket.</span>
+              </h2>
+              <p className="getapp-sub">
+                Install the QuietWorld app on your phone or desktop in one tap.
+                Manage your subscription, store your wishes, and give your family
+                one number to call — all from your home screen.
+              </p>
+              <ul className="getapp-features">
+                <li>Installs straight to your home screen — no app store</li>
+                <li>Opens full-screen, like a native app</li>
+                <li>Works on iPhone, Android, and desktop</li>
+                <li>Always up to date — nothing to update manually</li>
+              </ul>
+              <InstallApp />
+            </div>
+
+            <div className="getapp-visual">
+              <div className="phone">
+                <div className="phone-screen">
+                  <div className="phone-logo">QW</div>
+                  <div className="phone-title">QuietWorld</div>
+                  <div className="phone-tag">For what comes next.</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
