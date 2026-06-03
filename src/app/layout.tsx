@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
 import Script from "next/script";
+import SupportWidget from "@/components/SupportWidget";
 import "./globals.css";
 
 const inter = Inter({
@@ -64,6 +65,7 @@ export default function RootLayout({
     >
       <body className="min-h-full">
         {children}
+        <SupportWidget />
         {/* Lottie web component player (free, no API key required) */}
         <Script
           src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"

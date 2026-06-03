@@ -1492,3 +1492,127 @@ body { font-family: var(--qw-sans) !important; }
   font-size: 14px; font-weight: 600;
 }
 .getapp-open-link:hover { color: #fff; }
+
+/* ============ SUPPORT WIDGET ============ */
+.sw-fab {
+  position: fixed; bottom: 28px; right: 24px; z-index: 999;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 20px; border-radius: 999px; border: none; cursor: pointer;
+  background: var(--navy-900, #0a1837); color: #fff;
+  font-family: inherit; font-weight: 700; font-size: 14px;
+  box-shadow: 0 8px 24px rgba(10,24,55,0.28);
+  transition: all 0.2s;
+}
+.sw-fab:hover { background: var(--blue-600, #2563eb); transform: translateY(-2px); }
+.sw-fab-open { background: var(--blue-600, #2563eb); border-radius: 50%; padding: 14px; }
+.sw-fab-icon { font-size: 18px; line-height: 1; }
+
+.sw-panel {
+  position: fixed; bottom: 90px; right: 24px; z-index: 998;
+  width: min(380px, calc(100vw - 32px));
+  height: min(520px, calc(100dvh - 120px));
+  background: #fff; border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(10,24,55,0.18), 0 0 0 1px rgba(10,24,55,0.06);
+  display: flex; flex-direction: column; overflow: hidden;
+  animation: swSlideUp 0.22s ease;
+}
+@keyframes swSlideUp {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+.sw-panel-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 18px; background: var(--navy-900, #0a1837); color: #fff;
+  flex-shrink: 0;
+}
+.sw-panel-title {
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 700; font-size: 15px;
+}
+.sw-panel-dot {
+  width: 9px; height: 9px; border-radius: 50%; background: #4ade80;
+  box-shadow: 0 0 0 3px rgba(74,222,128,0.25);
+}
+.sw-panel-close {
+  background: rgba(255,255,255,0.12); border: none; color: #fff;
+  width: 30px; height: 30px; border-radius: 50%; cursor: pointer;
+  font-size: 14px; display: flex; align-items: center; justify-content: center;
+}
+.sw-panel-close:hover { background: rgba(255,255,255,0.22); }
+
+.sw-messages {
+  flex: 1; overflow-y: auto; padding: 16px 14px; display: flex;
+  flex-direction: column; gap: 10px;
+  scrollbar-width: thin; scrollbar-color: #e2e8f0 transparent;
+}
+.sw-msg { display: flex; }
+.sw-msg-user { justify-content: flex-end; }
+.sw-msg-assistant { justify-content: flex-start; }
+.sw-bubble {
+  max-width: 82%; padding: 11px 14px; border-radius: 16px;
+  font-size: 14px; line-height: 1.55;
+}
+.sw-msg-user .sw-bubble {
+  background: var(--navy-900, #0a1837); color: #fff;
+  border-bottom-right-radius: 4px;
+}
+.sw-msg-assistant .sw-bubble {
+  background: #f1f5f9; color: #1e293b;
+  border-bottom-left-radius: 4px;
+}
+
+/* Typing indicator */
+.sw-typing { display: inline-flex; gap: 4px; align-items: center; padding: 2px 0; }
+.sw-typing span {
+  width: 7px; height: 7px; border-radius: 50%; background: #94a3b8;
+  animation: swBounce 1.2s ease-in-out infinite;
+}
+.sw-typing span:nth-child(2) { animation-delay: 0.2s; }
+.sw-typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes swBounce {
+  0%,60%,100% { transform: translateY(0); }
+  30% { transform: translateY(-5px); }
+}
+
+/* Suggested questions */
+.sw-suggested {
+  display: flex; flex-direction: column; gap: 6px; margin-top: 6px;
+}
+.sw-suggested button {
+  text-align: left; background: #fff; border: 1px solid #e2e8f0;
+  border-radius: 10px; padding: 9px 12px; font-size: 13px;
+  font-family: inherit; color: var(--navy-900, #0a1837); cursor: pointer;
+  transition: all 0.15s;
+}
+.sw-suggested button:hover {
+  border-color: var(--blue-600, #2563eb); color: var(--blue-600, #2563eb);
+  background: #eff6ff;
+}
+
+/* Input form */
+.sw-form {
+  display: flex; gap: 8px; padding: 12px 14px;
+  border-top: 1px solid #e2e8f0; flex-shrink: 0; background: #fff;
+}
+.sw-form input {
+  flex: 1; border: 1px solid #e2e8f0; border-radius: 10px;
+  padding: 10px 13px; font-size: 14px; font-family: inherit;
+  outline: none; background: #f8fafc;
+}
+.sw-form input:focus { border-color: var(--blue-600, #2563eb); background: #fff; }
+.sw-form input:disabled { opacity: 0.6; }
+.sw-form button {
+  width: 40px; height: 40px; border-radius: 10px; border: none;
+  background: var(--navy-900, #0a1837); color: #fff; cursor: pointer;
+  font-size: 16px; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: background 0.15s;
+}
+.sw-form button:hover:not(:disabled) { background: var(--blue-600, #2563eb); }
+.sw-form button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Keep widget above dashboard bottom nav on /app */
+@media (max-width: 600px) {
+  .sw-fab { bottom: 88px; right: 16px; }
+  .sw-panel { bottom: 152px; right: 16px; }
+}
