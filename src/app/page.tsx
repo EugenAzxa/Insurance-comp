@@ -481,7 +481,7 @@ export default function Home() {
               <div className="single-plan-badge">QUIETWORLD SUBSCRIPTION</div>
               <div className="single-plan-price">
                 <span className="single-plan-currency">$</span>
-                <span className="single-plan-amount">25</span>
+                <span className="single-plan-amount">15</span>
                 <span className="single-plan-period">/month</span>
               </div>
               <div className="single-plan-tagline">
