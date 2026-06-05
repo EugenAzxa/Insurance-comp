@@ -129,7 +129,21 @@ export default function Home() {
       {/* ============ NAV ============ */}
       <nav>
         <div className="nav-inner">
-          <a href="/" className="logo"><img src="/logo.svg" alt="Finally Peace" height="38" style={{height:"38px",width:"auto",display:"block"}} /></a>
+          <a href="/" className="logo" style={{display:"flex",alignItems:"center",gap:"10px",textDecoration:"none"}}>
+              <svg viewBox="0 0 86 52" width="86" height="38" xmlns="http://www.w3.org/2000/svg" style={{flexShrink:0}}>
+                <defs>
+                  <linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#3b82f6"/>
+                    <stop offset="100%" stopColor="#1d4ed8"/>
+                  </linearGradient>
+                </defs>
+                <ellipse cx="21" cy="26" rx="17" ry="13" fill="none" stroke="url(#ng)" strokeWidth="6" strokeLinecap="round"/>
+                <ellipse cx="55" cy="26" rx="17" ry="13" fill="none" stroke="url(#ng)" strokeWidth="6" strokeLinecap="round"/>
+                <line x1="38" y1="10" x2="38" y2="42" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" transform="rotate(-35,38,26)"/>
+                <path d="M38,6 Q40,12 38,18 Q36,12 38,6" fill="#93c5fd" transform="rotate(-35,38,26)"/>
+              </svg>
+              <span style={{fontFamily:"'Instrument Serif',Georgia,serif",fontStyle:"italic",fontSize:"24px",fontWeight:700,color:"#0f172a",letterSpacing:"-0.5px",whiteSpace:"nowrap"}}>Finally Peace</span>
+            </a>
           <div className="nav-links">
             <a href="#easy">What you get</a>
             <a href="#plans">The plan</a>
