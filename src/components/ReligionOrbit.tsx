@@ -220,25 +220,27 @@ export default function ReligionOrbit() {
         </div>
       </div>
 
-      {SYMBOLS.map((s, i) => {
-        const angle = (i / count) * 360;
-        return (
-          <div
-            key={s.name}
-            className="rel-orbit-item"
-            style={{
-              "--angle": `${angle}deg`,
-              "--radius": `${radius}px`,
-              "--color": s.color,
-              animationDelay: `${-(i / count) * 32}s`,
-            } as React.CSSProperties}
-            title={s.name}
-          >
-            <span className="rel-orbit-symbol">{s.svg}</span>
-            <span className="rel-orbit-label">{s.name}</span>
-          </div>
-        );
-      })}
+      <div className="rel-orbit-items-grid">
+        {SYMBOLS.map((s, i) => {
+          const angle = (i / count) * 360;
+          return (
+            <div
+              key={s.name}
+              className="rel-orbit-item"
+              style={{
+                "--angle": `${angle}deg`,
+                "--radius": `${radius}px`,
+                "--color": s.color,
+                animationDelay: `${-(i / count) * 32}s`,
+              } as React.CSSProperties}
+              title={s.name}
+            >
+              <span className="rel-orbit-symbol">{s.svg}</span>
+              <span className="rel-orbit-label">{s.name}</span>
+            </div>
+          );
+        })}
+      </div>
       <div className="rel-orbit-caption">
         Respectful of all faiths &amp; traditions
       </div>

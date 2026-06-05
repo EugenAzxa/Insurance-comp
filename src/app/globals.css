@@ -799,8 +799,8 @@ body { font-family: var(--qw-sans) !important; }
     50% { box-shadow: 0 0 0 7px rgba(245,158,11,0.05); }
   }
   .trust-logos {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 24px; max-width: 920px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; max-width: 720px; margin: 0 auto;
     align-items: center;
   }
   .trust-logo {
@@ -836,7 +836,7 @@ body { font-family: var(--qw-sans) !important; }
   .plan-lottie {
     position: absolute;
     pointer-events: none;
-    width: 180px; height: 180px;
+    width: 260px; height: 260px;
     z-index: 1;
   }
   .plan-lottie-left  { top: 20%; left: 2%; }
@@ -1764,16 +1764,34 @@ body { font-family: var(--qw-sans) !important; }
   font-style: italic; letter-spacing: 0.3px;
 }
 @media (max-width: 640px) {
-  /* On mobile: switch from orbit to a flat 4-column icon grid */
+  /* On mobile: planet centered on top, symbols grid below */
   .rel-orbit-wrap {
     width: 100%; height: auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
     margin-top: 32px;
-    padding: 0 8px;
+    padding: 0 16px;
   }
   .rel-orbit-ring { display: none; }
+
+  /* Planet sits on its own centered row */
+  .rel-planet {
+    position: static;
+    transform: none;
+    order: 0;
+  }
+  .rel-planet-globe { width: 160px; height: 160px; }
+
+  /* Wrap all orbit items in a sub-grid */
+  .rel-orbit-items-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    width: 100%;
+  }
+
   .rel-orbit-item {
     position: static;
     top: auto; left: auto;
@@ -1784,18 +1802,15 @@ body { font-family: var(--qw-sans) !important; }
     display: flex; flex-direction: column; align-items: center; gap: 6px;
   }
   .rel-orbit-symbol {
-    width: 52px; height: 52px; border-radius: 14px;
+    width: 56px; height: 56px; border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(15,23,42,0.08);
   }
-  .rel-orbit-label {
-    display: block;
-    font-size: 9px;
-  }
+  .rel-orbit-label { display: block; font-size: 10px; }
   .rel-orbit-caption {
     position: static;
     transform: none;
-    grid-column: 1 / -1;
-    margin-top: 8px;
     white-space: normal;
+    order: 99;
   }
 }
 
@@ -1835,7 +1850,8 @@ body { font-family: var(--qw-sans) !important; }
 
   /* Religion section */
   .rel-section { margin-top: 48px; padding-top: 40px; }
-  .rel-orbit-wrap { gap: 12px; padding: 0 4px; }
+  .rel-orbit-items-grid { gap: 10px; }
+  .rel-planet-globe { width: 140px; height: 140px; }
 
   /* Support widget — ensure it clears the bottom on very small phones */
   .sw-fab { bottom: 16px; right: 10px; padding: 12px 16px; font-size: 13px; }
@@ -1847,7 +1863,7 @@ body { font-family: var(--qw-sans) !important; }
 @media (max-width: 380px) {
   /* Extra small phones (SE, etc.) */
   .wl-num { font-size: 34px; }
-  .rel-orbit-wrap { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .rel-orbit-items-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
   .rel-orbit-symbol { width: 44px; height: 44px; }
 }
 
@@ -1859,14 +1875,15 @@ body { font-family: var(--qw-sans) !important; }
   z-index: 2;
 }
 .rel-planet-globe {
-  width: 120px; height: 120px;
+  width: 260px; height: 260px;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
   box-shadow:
-    0 0 0 2px rgba(255,255,255,0.08),
-    0 0 40px rgba(37,99,235,0.45),
-    inset -18px -6px 36px rgba(0,0,20,0.55);
+    0 0 0 3px rgba(255,255,255,0.12),
+    0 0 60px rgba(56,189,248,0.55),
+    0 0 120px rgba(37,99,235,0.3),
+    inset -24px -8px 48px rgba(0,0,20,0.45);
 }
 .rel-planet-surface {
   width: 200%; height: 100%;
@@ -1875,12 +1892,13 @@ body { font-family: var(--qw-sans) !important; }
   background-position: left center;
   background-size: auto 100%;
   animation: earthSpin 28s linear infinite;
+  filter: brightness(1.15) saturate(1.2);
 }
 .rel-planet-shine {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: radial-gradient(circle at 34% 30%, rgba(255,255,255,0.22) 0%, transparent 58%);
+  background: radial-gradient(circle at 34% 28%, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0.05) 45%, transparent 65%);
   pointer-events: none;
 }
 @keyframes earthSpin {
@@ -1896,5 +1914,5 @@ body { font-family: var(--qw-sans) !important; }
     justify-self: center;
     margin: 8px auto;
   }
-  .rel-planet-globe { width: 80px; height: 80px; }
+  .rel-planet-globe { width: 150px; height: 150px; }
 }
