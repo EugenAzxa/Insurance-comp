@@ -148,8 +148,10 @@ export default function Home() {
             <a href="#easy">What you get</a>
             <a href="#plans">The plan</a>
             <a href="#how">How it works</a>
-            <a href="#getapp">Get the app</a>
             <a href="#faq">FAQ</a>
+            <a href="/subscribe" className="btn btn-primary" style={{padding:"10px 20px",fontSize:"14px"}}>
+              Join the waitlist →
+            </a>
             <a href="/app" className="btn btn-nav">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="15" height="15" style={{display:"inline-block",verticalAlign:"middle",marginRight:"6px",marginTop:"-2px"}}>
                 <circle cx="12" cy="12" r="10"/>
@@ -765,9 +767,9 @@ export default function Home() {
                 even the cleanup of your apartment.
               </p>
               <div className="why-contact">
-                <a href="tel:+18554784569" className="why-contact-link">
+                <a href="mailto:FinallyPeacer@gmail.com" className="why-contact-link">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.37 19a19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                  1-855-478-4569
+                  FinallyPeacer@gmail.com
                 </a>
                 <a href="mailto:FinallyPeacer@gmail.com" className="why-contact-link">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
