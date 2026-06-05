@@ -20,7 +20,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://finally-peace.com"),
+  metadataBase: new URL("https://finallypeace.com"),
   title: "Finally Peace — A subscription for what comes next.",
   description:
     "End-of-life coverage, rebuilt as one simple $15/month subscription. Funeral, legal, debt, and transportation — all included, so your family never has to plan a funeral on the worst week of their life.",

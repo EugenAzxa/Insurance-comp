@@ -129,7 +129,7 @@ export default function Home() {
       {/* ============ NAV ============ */}
       <nav>
         <div className="nav-inner">
-          <div className="logo">Finally Peace</div>
+          <a href="/" className="logo"><img src="/logo.svg" alt="Finally Peace" height="38" style={{height:"38px",width:"auto",display:"block"}} /></a>
           <div className="nav-links">
             <a href="#easy">What you get</a>
             <a href="#plans">The plan</a>

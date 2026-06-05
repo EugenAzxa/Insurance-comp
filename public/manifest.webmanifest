@@ -1,13 +1,13 @@
 {
-  "name": "QuietWorld",
-  "short_name": "QuietWorld",
-  "description": "End-of-life insurance, rebuilt as one simple $15/month subscription.",
+  "name": "Finally Peace",
+  "short_name": "Finally Peace",
+  "description": "End-of-life coverage, rebuilt as one simple $15/month subscription.",
   "start_url": "/app?source=pwa",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#0A1837",
-  "theme_color": "#0A1837",
+  "background_color": "#1a0533",
+  "theme_color": "#1a0533",
   "icons": [
     {
       "src": "/icon-192.png",
