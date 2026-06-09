@@ -206,7 +206,7 @@ function OverviewTab({ data, onData }: { data: AppData; onData: (d: AppData) => 
           <div className="dash-cq-title">24/7 Concierge</div>
           <div className="dash-cq-sub">One call handles everything.</div>
         </div>
-        <a href="mailto:FinallyPeacer@gmail.com" className="dash-cq-btn">Email us</a>
+        
       </div>
     </div>
   );
@@ -363,10 +363,8 @@ function PlanTab({ data, onData }: { data: AppData; onData: (d: AppData) => void
           <span className="dash-card-title">24/7 Concierge</span>
         </div>
         <p>One number for {data.profile.name || "your family"} when it matters most.</p>
-        <a href="mailto:FinallyPeacer@gmail.com" className="dash-concierge-btn">Email · FinallyPeacer@gmail.com</a>
-        <a href="mailto:FinallyPeacer@gmail.com" className="dash-concierge-btn dash-concierge-btn-ghost">
-          Email · FinallyPeacer@gmail.com
-        </a>
+        
+        
       </div>
 
       <div className="dash-disclaimer">Your data is saved privately on this device only.</div>
