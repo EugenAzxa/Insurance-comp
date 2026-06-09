@@ -1862,9 +1862,21 @@ body { font-family: var(--qw-sans) !important; }
   .hero-actions {
     flex-direction: column !important;
     align-items: stretch !important;
-    gap: 10px !important;
+    gap: 12px !important;
   }
-  .hero-actions .btn { text-align: center; justify-content: center; width: 100%; }
+  .hero-actions .btn {
+    text-align: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding: 15px 20px !important;
+    font-size: 16px !important;
+    border-radius: 14px !important;
+  }
+  .hero-actions .btn-secondary {
+    border: 2px solid #cbd5e1 !important;
+    color: #0f172a !important;
+    background: #fff !important;
+  }
 
   /* Hero waitlist button — bigger pill, animated */
   .hero-waitlist-btn {
