@@ -6,7 +6,10 @@ type Step = 1 | 2 | 3;
 
 export default function SubscribePage() {
   const [step, setStep] = useState<Step>(1);
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [age, setAge] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [postal, setPostal] = useState("");
@@ -20,7 +23,7 @@ export default function SubscribePage() {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ plan: "finally-peace", email, name, address, postal, city }),
+        body: JSON.stringify({ plan: "finally-peace", email, name: firstName + " " + lastName, firstName, lastName, age, phone, address, postal, city }),
       });
       const data = await res.json() as { url?: string; error?: string };
       if (data.url) {
@@ -86,10 +89,26 @@ export default function SubscribePage() {
             <h1 className="sub-title">Let&apos;s get started</h1>
             <p className="sub-sub">No medical exam. No agent visit. Just you and 3 quick steps.</p>
             <div className="sub-fields">
-              <label className="sub-label">
-                Your first name
-                <input className="sub-input" type="text" placeholder="e.g. Sarah" value={name} onChange={e => setName(e.target.value)} autoFocus />
-              </label>
+              <div className="sub-row-2">
+                <label className="sub-label">
+                  First name
+                  <input className="sub-input" type="text" placeholder="Sarah" value={firstName} onChange={e => setFirstName(e.target.value)} autoFocus />
+                </label>
+                <label className="sub-label">
+                  Last name
+                  <input className="sub-input" type="text" placeholder="Smith" value={lastName} onChange={e => setLastName(e.target.value)} />
+                </label>
+              </div>
+              <div className="sub-row-2">
+                <label className="sub-label">
+                  Age
+                  <input className="sub-input" type="number" placeholder="35" min="18" max="85" value={age} onChange={e => setAge(e.target.value)} />
+                </label>
+                <label className="sub-label">
+                  Phone number
+                  <input className="sub-input" type="tel" placeholder="+1 (555) 000-0000" value={phone} onChange={e => setPhone(e.target.value)} />
+                </label>
+              </div>
               <label className="sub-label">
                 Email address
                 <input className="sub-input" type="email" placeholder="you@email.com" value={email} onChange={e => setEmail(e.target.value)} />
@@ -98,18 +117,18 @@ export default function SubscribePage() {
                 Street address
                 <input className="sub-input" type="text" placeholder="123 Main St" value={address} onChange={e => setAddress(e.target.value)} />
               </label>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"12px"}}>
+              <div className="sub-row-2">
                 <label className="sub-label">
                   City
                   <input className="sub-input" type="text" placeholder="Toronto" value={city} onChange={e => setCity(e.target.value)} />
                 </label>
                 <label className="sub-label">
-                  Postal / ZIP code
+                  Postal / ZIP
                   <input className="sub-input" type="text" placeholder="M5V 2T6" value={postal} onChange={e => setPostal(e.target.value)} />
                 </label>
               </div>
             </div>
-            <button className="sub-btn" disabled={!name || !email || !address || !postal} onClick={() => setStep(2)}>
+            <button className="sub-btn" disabled={!firstName || !lastName || !age || !email || !address || !postal} onClick={() => setStep(2)}>
               Continue →
             </button>
             <p className="sub-fine">No spam. We email you once when it&apos;s your turn.</p>
@@ -163,7 +182,13 @@ export default function SubscribePage() {
 
             <div className="sub-summary">
               <div className="sub-summary-row">
-                <span>Name</span><strong>{name}</strong>
+                <span>Name</span><strong>{firstName} {lastName}</strong>
+              </div>
+              <div className="sub-summary-row">
+                <span>Age</span><strong>{age}</strong>
+              </div>
+              <div className="sub-summary-row">
+                <span>Phone</span><strong>{phone}</strong>
               </div>
               <div className="sub-summary-row">
                 <span>Email</span><strong>{email}</strong>
