@@ -14,8 +14,10 @@ export default function SubscribePage() {
   const [address, setAddress] = useState("");
   const [postal, setPostal] = useState("");
   const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   async function handleCheckout() {
     setLoading(true);
@@ -23,7 +25,7 @@ export default function SubscribePage() {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ plan: "finally-peace", email, name: fullName, age, gender, phone, address, postal, city }),
+        body: JSON.stringify({ plan: "finally-peace", email, name: fullName, age, gender, phone, address, postal, city, country }),
       });
       const data = await res.json() as { url?: string; error?: string };
       if (data.url) {
@@ -68,7 +70,31 @@ export default function SubscribePage() {
           </svg>
           <span className="sub-logo-name">Finally Peace</span>
         </a>
+
+        {/* Menu button */}
+        <button className="sub-menu-btn" onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
+          {menuOpen ? (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          ) : (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          )}
+        </button>
+
+        {/* Menu dropdown */}
+        {menuOpen && (
+          <div className="sub-menu-dropdown">
+            <a href="/" onClick={() => setMenuOpen(false)}>Home</a>
+            <a href="/#easy" onClick={() => setMenuOpen(false)}>What you get</a>
+            <a href="/#plans" onClick={() => setMenuOpen(false)}>The plan</a>
+            <a href="/#how" onClick={() => setMenuOpen(false)}>How it works</a>
+            <a href="/#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+            <a href="/app" onClick={() => setMenuOpen(false)}>Open the app</a>
+          </div>
+        )}
       </div>
+
+      {/* Menu overlay (click outside to close) */}
+      {menuOpen && <div className="sub-menu-overlay" onClick={() => setMenuOpen(false)} />}
 
       {/* Progress */}
       <div className="sub-progress">
@@ -132,8 +158,12 @@ export default function SubscribePage() {
                   <input className="sub-input" type="text" placeholder="M5V 2T6" value={postal} onChange={e => setPostal(e.target.value)} />
                 </label>
               </div>
+              <label className="sub-label">
+                Country
+                <input className="sub-input" type="text" placeholder="Canada" value={country} onChange={e => setCountry(e.target.value)} />
+              </label>
             </div>
-            <button className="sub-btn" disabled={!fullName || !age || !gender || !email || !address || !postal} onClick={() => setStep(2)}>
+            <button className="sub-btn" disabled={!fullName || !age || !gender || !email || !address || !postal || !country} onClick={() => setStep(2)}>
               Continue →
             </button>
             <p className="sub-fine">No spam. We email you once when it&apos;s your turn.</p>
@@ -206,6 +236,9 @@ export default function SubscribePage() {
               </div>
               <div className="sub-summary-row">
                 <span>Postal code</span><strong>{postal}</strong>
+              </div>
+              <div className="sub-summary-row">
+                <span>Country</span><strong>{country}</strong>
               </div>
               <div className="sub-summary-row">
                 <span>Rate</span><strong>Locked at your age today - forever</strong>
