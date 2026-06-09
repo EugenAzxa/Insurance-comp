@@ -1873,17 +1873,8 @@ body { font-family: var(--qw-sans) !important; }
   /* Nav: only show Join button, float Open the app to bottom-right */
   .nav-links { gap: 8px; }
   .btn-primary { padding: 10px 14px !important; font-size: 13px !important; }
-  .btn-nav {
-    position: fixed !important;
-    bottom: 16px !important;
-    right: 16px !important;
-    z-index: 998;
-    padding: 12px 16px !important;
-    font-size: 13px !important;
-    border-radius: 999px !important;
-  }
-  /* Push support button above the Open the app button */
-  .sw-fab { bottom: 72px !important; }
+  /* Support button sits at the very bottom on mobile */
+  .sw-fab { bottom: 16px !important; right: 16px !important; }
 
   /* Waitlist counter number — prevent overflow */
   .wl-num { font-size: 40px; }
