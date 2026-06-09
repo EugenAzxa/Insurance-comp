@@ -4,6 +4,18 @@ import "./subscribe.css";
 
 type Step = 1 | 2 | 3;
 
+const COUNTRIES = [
+  "United States","Canada","United Kingdom","Australia","Ireland","New Zealand",
+  "Germany","France","Netherlands","Belgium","Switzerland","Austria","Spain",
+  "Portugal","Italy","Sweden","Norway","Denmark","Finland","Iceland","Poland",
+  "Czech Republic","Greece","Hungary","Romania","Croatia","Mexico","Brazil",
+  "Argentina","Chile","Colombia","Peru","India","Pakistan","Bangladesh",
+  "Philippines","Singapore","Malaysia","Indonesia","Thailand","Vietnam",
+  "Japan","South Korea","China","Hong Kong","United Arab Emirates","Saudi Arabia",
+  "Qatar","Kuwait","Israel","Turkey","South Africa","Nigeria","Kenya","Ghana",
+  "Egypt","Morocco",
+];
+
 export default function SubscribePage() {
   const [step, setStep] = useState<Step>(1);
   const [fullName, setFullName] = useState("");
@@ -160,7 +172,10 @@ export default function SubscribePage() {
               </div>
               <label className="sub-label">
                 Country
-                <input className="sub-input" type="text" placeholder="Canada" value={country} onChange={e => setCountry(e.target.value)} />
+                <input className="sub-input" type="text" placeholder="Start typing…" value={country} onChange={e => setCountry(e.target.value)} list="country-list" autoComplete="country-name" />
+                <datalist id="country-list">
+                  {COUNTRIES.map(c => <option key={c} value={c} />)}
+                </datalist>
               </label>
             </div>
             <button className="sub-btn" disabled={!fullName || !age || !gender || !email || !address || !postal || !country} onClick={() => setStep(2)}>

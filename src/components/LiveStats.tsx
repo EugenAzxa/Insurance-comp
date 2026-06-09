@@ -4,28 +4,30 @@ import { useEffect, useRef, useState } from "react";
 
 /* ------------------------------------------------------------------ *
  * Waitlist counter
- * Seeds at 348 and grows ~3–7 people per hour, persisted in
- * localStorage so the number feels consistent across visits.
+ * Seeds at 231 and grows ~10 people per day. The seed timestamp is
+ * stored once in localStorage, so the count is a smooth, monotonic
+ * function of time-since-first-visit (consistent across visits).
  * ------------------------------------------------------------------ */
-const SEED = 348;
-const KEY = "qw.waitlist.v1";
+const SEED = 231;
+const PER_DAY = 10;
+const KEY = "fp.waitlist.v2";
 
 function getCount(): number {
   if (typeof window === "undefined") return SEED;
   try {
     const raw = localStorage.getItem(KEY);
+    let t0: number;
     if (!raw) {
-      localStorage.setItem(KEY, JSON.stringify({ n: SEED, t: Date.now() }));
-      return SEED;
+      t0 = Date.now();
+      localStorage.setItem(KEY, JSON.stringify({ t0 }));
+    } else {
+      const parsed = JSON.parse(raw) as { t0?: number };
+      t0 = parsed.t0 ?? Date.now();
+      if (parsed.t0 == null) localStorage.setItem(KEY, JSON.stringify({ t0 }));
     }
-    const { n, t } = JSON.parse(raw) as { n: number; t: number };
-    const hoursElapsed = (Date.now() - t) / 3_600_000;
-    // ~3–7 new signups per hour (deterministic from seed + hours so same
-    // result on re-render within the same hour)
-    const growth = Math.floor(hoursElapsed * 5 + ((n * 7 + Math.floor(hoursElapsed * 13)) % 3));
-    const updated = n + growth;
-    localStorage.setItem(KEY, JSON.stringify({ n: updated, t: Date.now() }));
-    return updated;
+    const daysElapsed = (Date.now() - t0) / 86_400_000;
+    const growth = Math.max(0, Math.floor(daysElapsed * PER_DAY));
+    return SEED + growth;
   } catch {
     return SEED;
   }
